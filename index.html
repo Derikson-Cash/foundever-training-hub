@@ -136,7 +136,6 @@
       radial-gradient(circle at 50% 90%, rgba(168,85,247,.04) 0%, transparent 30%);
     pointer-events:none;
     animation:sidebarGlow 10s ease infinite;
-    z-index:1;
   }
   
   @keyframes sidebarGlow{
@@ -211,7 +210,6 @@
     width:100%;
     position:relative;
     overflow:hidden;
-    z-index:10;
   }
   .nav-item::before{
     content:'';
@@ -777,17 +775,17 @@
       <div class="section-title">Training Decks</div>
       
       <div class="deck-grid">
-        <a href="decks/FoundEver Multiple SSN Blocker Process.pdf" download class="deck-card" style="text-decoration:none;color:inherit;">
+        <div class="deck-card">
           <div class="deck-icon">📄</div>
           <div class="deck-title">FoundEver Multiple SSN Blocker Process.pdf</div>
           <div class="deck-meta">Available • Click to download</div>
-        </a>
+        </div>
 
-        <a href="decks/Jira Submissions .pdf" download class="deck-card" style="text-decoration:none;color:inherit;">
+        <div class="deck-card">
           <div class="deck-icon">📄</div>
           <div class="deck-title">Jira Submissions.pdf</div>
           <div class="deck-meta">Available • Click to download</div>
-        </a>
+        </div>
 
         <div class="deck-card" style="opacity:0.6;cursor:not-allowed;">
           <div class="deck-icon">⏳</div>
@@ -814,4 +812,47 @@
 
         <div class="team-card">
           <div class="team-avatar">TB</div>
-          
+          <div class="team-name">Tania Barajas</div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">CB</div>
+          <div class="team-name">Casey Baker</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showView(viewId) {
+  // Hide all views
+  document.querySelectorAll('.view').forEach(view => {
+    view.classList.remove('active');
+  });
+  
+  // Show selected view
+  document.getElementById(viewId).classList.add('active');
+  
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  
+  // Update page title
+  const titles = {
+    'dashboard': 'Training Dashboard',
+    'completed': 'Completed Trainings',
+    'upcoming': 'Upcoming Trainings',
+    'ideas': 'Training Ideas',
+    'decks': 'Training Decks',
+    'team': 'Training Team'
+  };
+  document.getElementById('page-title').textContent = titles[viewId];
+}
+</script>
+
+</body>
+</html>
